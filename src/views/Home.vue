@@ -43,7 +43,9 @@ export default {
           prop: "desc",
           label: "备注",
           placeholder: "44",
-          methods: "handleTextarea",
+          methods: {
+            input: "handleTextarea"
+          },
         },
         {
           component: "select",
@@ -60,6 +62,9 @@ export default {
               value: "beijing",
             },
           ],
+          methods: {
+            change: "handleChange"
+          }
         },
       ],
     };
