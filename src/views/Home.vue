@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <VueForm :formItems="formItems" @handleInput="handleInput" @handleChange="handleChange" />
+    <VueForm
+      :formItems="formItems"
+      @handleInput="handleInput"
+      @handleChange="handleChange"
+    />
   </div>
 </template>
 
@@ -22,7 +26,7 @@ export default {
           placeholder: "11",
           methods: {
             input: "handleInput",
-            change: "handleChange"
+            change: "handleChange",
           },
         },
         {
@@ -30,12 +34,17 @@ export default {
           prop: "age1",
           label: "年龄",
           placeholder: "22",
+          methods: {
+            input: "handleInput",
+            change: "handleChange",
+          },
         },
         {
           component: "switch",
           prop: "age",
           label: "已就业",
           placeholder: "33",
+          methods: {},
         },
         {
           component: "input",
@@ -43,15 +52,14 @@ export default {
           prop: "desc",
           label: "备注",
           placeholder: "44",
-          methods: {
-            input: "handleTextarea"
-          },
+          methods: {},
         },
         {
           component: "select",
           prop: "region",
           label: "选择",
           placeholder: "55",
+          methods: {},
           option: [
             {
               label: "区域一",
@@ -62,20 +70,17 @@ export default {
               value: "beijing",
             },
           ],
-          methods: {
-            change: "handleChange"
-          }
         },
       ],
     };
   },
   methods: {
-    handleInput(v) {
-      console.log("handleInput ===> ", v);
+    handleInput(v, items) {
+      console.log("handleInput ===> ", v, items);
     },
-    handleChange(v) {
-      console.log("handleChange ===> ", v);
-    }
+    handleChange(v, items) {
+      console.log("handleChange ===> ", v, items);
+    },
   },
 };
 </script>

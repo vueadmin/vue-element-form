@@ -10,8 +10,8 @@
         :type="items.type"
         :is="componentList[items.component]"
         :placeholder="items.placeholder"
-        @input="handleInput(items.methods.input, $event)"
-        @change="handleChange(items.methods.change, $event)"
+        @input="handleInput(items.methods.input, $event, items)"
+        @change="handleChange(items.methods.change, $event, items)"
       >
         <el-option
           v-for="option in items.option"
@@ -48,12 +48,14 @@ export default {
     };
   },
   methods: {
-    handleInput(v, e) {
-      this.$emit(v, e);
-    },
-    handleChange(v, e) {
+    handleInput(v, e, items) {
       if (v !== undefined) {
-        this.$emit(v, e);
+        this.$emit(v, e, items);
+      }
+    },
+    handleChange(v, e, items) {
+      if (v !== undefined) {
+        this.$emit(v, e, items);
       }
     },
     onSubmit() {
